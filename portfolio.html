@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions Engineer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4a5568;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        main {
+            margin-top: 80px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .section:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2d3748;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2d3748;
+        }
+
+        .project-subtitle {
+            color: #667eea;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .project-description {
+            color: #4a5568;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: #e6fffa;
+            color: #047857;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .metrics {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .metric-label {
+            color: #718096;
+            font-size: 0.8rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            flex: 1;
+            padding: 0.7rem;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .primary-link {
+            background: #667eea;
+            color: white;
+        }
+
+        .primary-link:hover {
+            background: #5a67d8;
+        }
+
+        .secondary-link {
+            background: #f7fafc;
+            color: #4a5568;
+            border: 1px solid #e2e8f0;
+        }
+
+        .secondary-link:hover {
+            background: #edf2f7;
+        }
+
+        .skills-section {
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-list {
+            list-style: none;
+            text-align: left;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            color: #4a5568;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .contact-section {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #667eea;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #4a5568;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Solutions Engineer</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle">☰</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Enterprise Solutions Engineer</h1>
+                <p>Building intelligent automation systems that solve real business challenges</p>
+                <a href="#projects" class="cta-button">View My Work</a>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title fade-in">Featured Projects</h2>
+                
+                <div class="projects-grid">
+                    <div class="project-card fade-in">
+                        <div class="project-icon">🏥</div>
+                        <h3 class="project-title">Medical Document Analysis Platform</h3>
+                        <p class="project-subtitle">AI-Powered Healthcare Document Processing</p>
+                        <p class="project-description">
+                            Comprehensive full-stack platform for automated medical document analysis and expert opinion generation. Processes legal claims, medical records, and generates detailed expert reports for medical malpractice cases and insurance evaluations.
+                        </p>
+                        
+                        <div class="metrics">
+                            <div class="metric">
+                                <div class="metric-value">95%+</div>
+                                <div class="metric-label">OCR Accuracy</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">5min</div>
+                                <div class="metric-label">Avg Processing</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">30min</div>
+                                <div class="metric-label">Report Generation</div>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">GPT-4/O1</span>
+                            <span class="tech-tag">Google Gemini</span>
+                            <span class="tech-tag">Supabase</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link primary-link">Live Demo</a>
+                            <a href="#" class="project-link secondary-link">View Code</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-icon">📚</div>
+                        <h3 class="project-title">Educational Report Automation</h3>
+                        <p class="project-subtitle">AI-Driven Student Assessment Platform</p>
+                        <p class="project-description">
+                            Intelligent automation platform for educational institutions that streamlines student progress report creation. Combines web scraping, AI-powered content generation, and automated form filling to eliminate manual reporting tasks.
+                        </p>
+
+                        <div class="metrics">
+                            <div class="metric">
+                                <div class="metric-value">500+</div>
+                                <div class="metric-label">Students/Batch</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">90%</div>
+                                <div class="metric-label">Time Saved</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">Multi-Lang</div>
+                                <div class="metric-label">Support</div>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Playwright</span>
+                            <span class="tech-tag">OpenAI</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">ReportLab</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link primary-link">Case Study</a>
+                            <a href="#" class="project-link secondary-link">Documentation</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-icon">📧</div>
+                        <h3 class="project-title">Intelligent Lead Generation Platform</h3>
+                        <p class="project-subtitle">AI-Powered B2B Marketing Automation</p>
+                        <p class="project-description">
+                            Comprehensive lead generation and email marketing automation system. Discovers potential clients, extracts contact information, personalizes outreach campaigns, and manages follow-up communications using multi-agent AI.
+                        </p>
+
+                        <div class="metrics">
+                            <div class="metric">
+                                <div class="metric-value">85%</div>
+                                <div class="metric-label">Email Verification</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">200+</div>
+                                <div class="metric-label">Emails/Day</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">40%</div>
+                                <div class="metric-label">Response Rate</div>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Scrapy</span>
+                            <span class="tech-tag">CrewAI</span>
+                            <span class="tech-tag">GPT-4</span>
+                            <span class="tech-tag">SMTP/IMAP</span>
+                            <span class="tech-tag">Node.js</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link primary-link">View Demo</a>
+                            <a href="#" class="project-link secondary-link">Architecture</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-icon">🔄</div>
+                        <h3 class="project-title">Medical Document Processing System</h3>
+                        <p class="project-subtitle">Automated Healthcare Workflow Management</p>
+                        <p class="project-description">
+                            Automated email processing system for medical institutions. Monitors email attachments, uses AI-powered document classification, and generates organized reports with paired medical documents using Google Gemini Vision API.
+                        </p>
+
+                        <div class="metrics">
+                            <div class="metric">
+                                <div class="metric-value">50+</div>
+                                <div class="metric-label">Docs/5min</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">95%</div>
+                                <div class="metric-label">Pairing Accuracy</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">24/7</div>
+                                <div class="metric-label">Monitoring</div>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">AsyncIO</span>
+                            <span class="tech-tag">Google Gemini</span>
+                            <span class="tech-tag">PyMuPDF</span>
+                            <span class="tech-tag">Email Processing</span>
+                            <span class="tech-tag">Excel/CSV</span>
+                        </div>
+
+                        <div class="project-links">
+                            <a href="#" class="project-link primary-link">Technical Details</a>
+                            <a href="#" class="project-link secondary-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section skills-section">
+            <div class="container">
+                <h2 class="section-title fade-in">Technical Expertise</h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-category fade-in">
+                        <h3>AI & Machine Learning</h3>
+                        <ul class="skill-list">
+                            <li>OpenAI GPT-4/O1 Integration</li>
+                            <li>Google Gemini Vision API</li>
+                            <li>CrewAI Multi-Agent Systems</li>
+                            <li>Natural Language Processing</li>
+                            <li>Document Intelligence</li>
+                            <li>Response Classification</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category fade-in">
+                        <h3>Backend Development</h3>
+                        <ul class="skill-list">
+                            <li>Python (FastAPI, Flask)</li>
+                            <li>Node.js & Express</li>
+                            <li>RESTful API Design</li>
+                            <li>Database Management</li>
+                            <li>Microservices Architecture</li>
+                            <li>Async Programming</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category fade-in">
+                        <h3>Frontend Development</h3>
+                        <ul class="skill-list">
+                            <li>React & TypeScript</li>
+                            <li>Next.js Framework</li>
+                            <li>Tailwind CSS</li>
+                            <li>Responsive Design</li>
+                            <li>State Management</li>
+                            <li>Modern JavaScript ES6+</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category fade-in">
+                        <h3>Data & Automation</h3>
+                        <ul class="skill-list">
+                            <li>Web Scraping (Scrapy, Playwright)</li>
+                            <li>Data Processing (Pandas, NumPy)</li>
+                            <li>Email Automation (SMTP/IMAP)</li>
+                            <li>Document Processing (PDF, DOCX)</li>
+                            <li>Workflow Automation</li>
+                            <li>ETL Pipelines</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category fade-in">
+                        <h3>Cloud & DevOps</h3>
+                        <ul class="skill-list">
+                            <li>Google Cloud Platform</li>
+                            <li>Supabase & Firebase</li>
+                            <li>Docker Containerization</li>
+                            <li>CI/CD Pipelines</li>
+                            <li>Cloud Storage Solutions</li>
+                            <li>API Gateway Management</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category fade-in">
+                        <h3>Business Solutions</h3>
+                        <ul class="skill-list">
+                            <li>Enterprise Integration</li>
+                            <li>Process Automation</li>
+                            <li>CRM System Integration</li>
+                            <li>Healthcare Compliance</li>
+                            <li>Educational Technology</li>
+                            <li>Marketing Automation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <div class="contact-content">
+                    <h2 class="section-title fade-in">Ready to Build Solutions Together?</h2>
+                    <p class="fade-in">I specialize in creating intelligent automation systems that solve complex business challenges. Let's discuss how I can help optimize your operations.</p>
+                    
+                    <div class="contact-info fade-in">
+                        <div class="contact-item">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📧</div>
+                            <h4>Email</h4>
+                            <p>your.email@example.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">💼</div>
+                            <h4>LinkedIn</h4>
+                            <p>linkedin.com/in/yourprofile</p>
+                        </div>
+                        <div class="contact-item">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🐱</div>
+                            <h4>GitHub</h4>
+                            <p>github.com/yourusername</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile menu toggle (basic implementation)
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Highlight active navigation
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+    <style>
+        .nav-links a.active {
+            color: #667eea;
+            font-weight: 600;
+        }
+    </style>
+</body>
+</html>
